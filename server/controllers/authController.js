@@ -1,5 +1,7 @@
 import AuthHelper from "../helpers/authHelper";
 import { hashPassword } from "../helpers/hasher";
+import tokenGenerator from "../helpers/helperToken";
+import passwordHashHelper from "../helpers/passwordHashHelper";
 
 const signUp = async (req, res) => {
   try {
@@ -16,7 +18,7 @@ const signUp = async (req, res) => {
       fname,
       lname,
       email,
-      password,
+      password: hashValue,
       country,
       phoneNumber,
       salt,
@@ -33,8 +35,31 @@ const signUp = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       status: 500,
-      error: 'server error'
+      error: "server error",
     });
   }
 };
-export { signUp };
+
+const signIn = async (req, res) => {
+  const emailExists = await AuthHelper.userExists("email", req.body.email);
+  if (emailExists) {
+    const passwordExist = await passwordHashHelper.checkPassword(
+      req.body.password,
+      emailExists.password
+    );
+    if (passwordExist) {
+      return res.status(200).json({
+        status: 200,
+        message: "Successfully loged in",
+        data: {
+          token: await tokenGenerator(emailExists.email),
+        },
+      });
+    }
+  }
+  return res.status(401).json({
+    status: 401,
+    error: "Email or Password is incorrect",
+  });
+};
+export { signUp, signIn };
