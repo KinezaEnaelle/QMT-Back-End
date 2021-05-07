@@ -1,24 +1,40 @@
 import AuthHelper from "../helpers/authHelper";
+import { hashPassword } from "../helpers/hasher";
 
-class AuthController {
-  static async signUp(req, res) {
-    const emailExists = await AuthHelper.userExists("email", req.body.email);
+const signUp = async (req, res) => {
+  try {
+    const { fname, lname, email, password, country, phoneNumber } = req.body;
+    const emailExists = await AuthHelper.userExists("email", email);
     if (emailExists) {
       return res.status(409).json({
         status: 409,
         error: "This user already exists, use a....",
       });
     }
-    const { name, email } = req.body;
-    const user = { name, email };
+    const { salt, hashValue } = hashPassword(password);
+    const user = {
+      fname,
+      lname,
+      email,
+      password,
+      country,
+      phoneNumber,
+      salt,
+      hashValue,
+    };
     const savedUser = await AuthHelper.saveUser(user);
     if (savedUser) {
       return res.status(201).json({
         status: 201,
         message: " Successfully created",
-        user,
       });
     }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      status: 500,
+      error: 'server error'
+    });
   }
-}
-export default AuthController;
+};
+export { signUp };

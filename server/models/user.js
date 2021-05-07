@@ -14,9 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   User.init({
-    name: DataTypes.STRING,
+    fname: DataTypes.STRING,
+    lname: DataTypes.STRING,
     email: DataTypes.STRING,
-    phoneNumber: DataTypes.INTEGER
+    country: DataTypes.ENUM*('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA'),
+    phoneNumber: DataTypes.STRING,
+    password: DataTypes.TEXT,
+    salt: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'User',

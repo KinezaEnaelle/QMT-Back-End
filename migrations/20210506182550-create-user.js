@@ -8,14 +8,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      fname: {
+        type: Sequelize.STRING
+      },
+      lname: {
         type: Sequelize.STRING
       },
       email: {
         type: Sequelize.STRING
       },
+      country: {
+        type: Sequelize.ENUM('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA')
+      },
       phoneNumber: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
+      },
+      password: {
+        type: Sequelize.TEXT
+      },
+      salt: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

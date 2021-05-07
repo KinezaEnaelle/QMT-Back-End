@@ -15,9 +15,13 @@ class AuthHelper {
             },
             {
                 fields: [
-                    'name',
+                    'fname',
+                    'lname',
+                    'country',
                     'email',
                     'phoneNumber',
+                    'password',
+                    'salt',
                     'createdAt',
                     'updatedAt'
                 ],
