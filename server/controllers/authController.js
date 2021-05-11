@@ -23,7 +23,7 @@ const signUp = async (req, res) => {
       phoneNumber,
       salt,
       hashValue,
-      role: 'USER'
+      role: "USER",
     };
     const savedUser = await AuthHelper.saveUser(user);
     if (savedUser) {
