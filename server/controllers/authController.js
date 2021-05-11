@@ -23,6 +23,7 @@ const signUp = async (req, res) => {
       phoneNumber,
       salt,
       hashValue,
+      role: 'USER'
     };
     const savedUser = await AuthHelper.saveUser(user);
     if (savedUser) {
@@ -52,7 +53,7 @@ const signIn = async (req, res) => {
         status: 200,
         message: "Successfully loged in",
         data: {
-          token: await tokenGenerator(emailExists.email),
+          token: await tokenGenerator(emailExists.role, emailExists.id),
         },
       });
     }

@@ -5,6 +5,8 @@ import validateNumberByCountry from "../middlewares/validatePhoneNumber";
 import {
   checkPasswords,
   checkValidations,
+  validateUniqueEmail,
+  validateUniquePhoneNumber
 } from "../middlewares/furtherSignupValidator";
 
 const router = Router();
@@ -15,6 +17,8 @@ router.post(
   checkValidations,
   validateNumberByCountry,
   checkPasswords,
+  validateUniqueEmail,
+  validateUniquePhoneNumber,
   signUp
 );
 router.post("/auth/signin", signIn);

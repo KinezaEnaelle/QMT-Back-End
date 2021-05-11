@@ -1,3 +1,4 @@
+import { Op } from 'sequelize';
 import models from '../models';
 const { User } = models;
 
@@ -6,6 +7,7 @@ class AuthHelper {
         const user = await User.findOne({ where : {[attr]: val }});
         return user;
     }
+
     static async saveUser(user){
         const acceptedUser = await User.create(
             {
@@ -22,6 +24,7 @@ class AuthHelper {
                     'phoneNumber',
                     'password',
                     'salt',
+                    'role',
                     'createdAt',
                     'updatedAt'
                 ],

@@ -11,16 +11,22 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      User.hasMany(models.Account,{
+        foreignKey: "userId",
+        as: "accounts"
+      });
     }
   };
   User.init({
     fname: DataTypes.STRING,
     lname: DataTypes.STRING,
     email: DataTypes.STRING,
-    country: DataTypes.ENUM*('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA'),
+    country: DataTypes.ENUM('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA'),
     phoneNumber: DataTypes.STRING,
     password: DataTypes.TEXT,
     salt: DataTypes.TEXT,
+    role: DataTypes.ENUM('ADMIN','USER'),
   }, {
     sequelize,
     modelName: 'User',

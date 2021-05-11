@@ -15,19 +15,24 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       country: {
         type: Sequelize.ENUM('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA')
       },
       phoneNumber: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       password: {
         type: Sequelize.TEXT
       },
       salt: {
         type: Sequelize.TEXT
+      },
+      role: {
+        type: Sequelize.ENUM('ADMIN','USER')
       },
       createdAt: {
         allowNull: false,
