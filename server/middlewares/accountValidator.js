@@ -3,18 +3,16 @@ import { check } from "express-validator";
 const accountName = check("accountName")
   .exists()
   .withMessage("account name required")
-  .trim()
-  .isEmail()
-  .normalizeEmail();
+  .trim();
 
 const accountNumber = check("accountNumber")
   .exists()
   .withMessage("account number required")
-  .trim()
-  .isEmail()
-  .normalizeEmail();
+  .trim();
 
-const amount = check("amount").exists().trim().isEmail().normalizeEmail();
+const amount = check("amount").exists().trim().notEmpty();
+
+const userId = check("userId").exists().trim().notEmpty();
 
 const pin = (pinField) =>
   check(pinField, "Pin should be atleast 5 digit long.")
@@ -26,7 +24,7 @@ const pin = (pinField) =>
     .withMessage("trim")
     .isString()
     .withMessage("integer")
-    .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.*[0-9])(?=.{8,})/);
+    .matches(/(?=.*[0-9])(?=.{5,}$)/);
 
 const validateAccount = [
   accountName,
