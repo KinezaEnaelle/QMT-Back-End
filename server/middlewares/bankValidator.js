@@ -4,8 +4,6 @@ const name = check("name")
   .exists()
   .withMessage("name required")
   .trim()
-  .isEmail()
-  .normalizeEmail();
 
 const location = check("location", "the location field is required")
   .exists()
