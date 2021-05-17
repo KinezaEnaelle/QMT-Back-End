@@ -25,9 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     {
       accountName: DataTypes.STRING,
       accountNumber: DataTypes.INTEGER,
-      pin: DataTypes.INTEGER,
+      pin: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
       amount: DataTypes.FLOAT,
+      salt: DataTypes.TEXT,
     },
     {
       sequelize,

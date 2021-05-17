@@ -20,7 +20,6 @@ const checkValidations = (req, res, next) => {
             errors
         });
     }
-    req.body.country = req.body.country.toUpperCase();
     return next();
 };
 

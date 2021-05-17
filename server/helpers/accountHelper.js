@@ -16,7 +16,7 @@ class AccountHelper {
         updatedAt: new Date(),
       },
       {
-        fields: ["accountName", "accountNumber", "pin", "userId", "amount"],
+        fields: ["accountName", "accountNumber", "pin", "userId", "salt", "amount"],
       }
     );
     return savedAccount;

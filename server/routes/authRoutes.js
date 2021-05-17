@@ -2,6 +2,7 @@ import Router from "express";
 import { signUp, signIn } from "../controllers/authController";
 import { validateSignUp } from "../middlewares/signUpValidator";
 import validateNumberByCountry from "../middlewares/validatePhoneNumber";
+import { verifyToken } from '../middlewares/checkToken';
 import {
   checkPasswords,
   checkValidations,

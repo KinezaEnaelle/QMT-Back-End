@@ -1,4 +1,5 @@
 const validateNumberByCountry = (req, res, next) => {
+    req.body.country = req.body.country.toUpperCase();
     const { country, phoneNumber } = req.body;
     const rwandaExp = new RegExp(/^2507[2,3,8][0-9]{7}$/);
     const ugandaExp = new RegExp (/^2567[0,5,7,8][0-9]{7}$/);

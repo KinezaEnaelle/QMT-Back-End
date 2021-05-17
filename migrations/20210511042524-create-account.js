@@ -15,13 +15,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       pin: {
-        type: Sequelize.INTEGER
+        type: Sequelize.TEXT
       },
       userId: {
         type: Sequelize.INTEGER
       },
       amount: {
         type: Sequelize.FLOAT
+      },
+      salt: {
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
