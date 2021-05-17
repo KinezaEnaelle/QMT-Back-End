@@ -1,9 +1,9 @@
-import bcrypt from 'bcrypt';
+import bcrypt from "bcrypt";
 
 const hashPin = (pin) => {
-    const salt = bcrypt.genSaltSync(10);
-    const hashMerit = bcrypt.hashSync(pin,salt);
-    return {salt,hashMerit};
+  const salt = bcrypt.genSaltSync(10);
+  const hashMerit = bcrypt.hashSync(pin, salt);
+  return { salt, hashMerit };
 };
 
 export { hashPin };
