@@ -21,5 +21,19 @@ class WalletHelper {
     );
     return savedWallet;
   }
+
+  static async updateWalletAmount(balance, userId) {
+    const updatedWallet = await Wallet.update(
+      {
+        balance: balance,
+      },
+      {
+        where: {
+          userId: userId,
+        },
+      }
+    );
+    return updatedWallet;
+  }
 }
 export default WalletHelper;

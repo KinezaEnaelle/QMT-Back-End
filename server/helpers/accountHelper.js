@@ -28,5 +28,19 @@ class AccountHelper {
     );
     return savedAccount;
   }
+
+  static async updateAmount(balance, accountNumber) {
+    const updatedAccount = await Account.update(
+      {
+        amount: balance,
+      },
+      {
+        where: {
+          accountNumber: accountNumber,
+        },
+      }
+    );
+    return updatedAccount;
+  }
 }
 export default AccountHelper;

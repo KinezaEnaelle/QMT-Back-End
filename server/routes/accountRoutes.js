@@ -1,5 +1,6 @@
 import Router from "express";
 import { addAccount } from "../controllers/accountController";
+import { rechargeBalance } from  '../controllers/rechargeController';
 import {
   validateAccount,
   validateRecharge,
@@ -27,7 +28,7 @@ router.put(
   isAccountOwner,
   validatePin,
   checkAmount,
-  addAccount
+  rechargeBalance
 );
 
 export default router;
