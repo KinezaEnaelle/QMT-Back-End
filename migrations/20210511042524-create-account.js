@@ -23,6 +23,9 @@ module.exports = {
       amount: {
         type: Sequelize.FLOAT,
       },
+      currency: {
+        type: Sequelize.STRING,
+      },
       salt: {
         type: Sequelize.TEXT,
       },

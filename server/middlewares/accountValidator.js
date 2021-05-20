@@ -14,6 +14,8 @@ const accountNumber = check("accountNumber")
 
 const amount = check("amount").exists().trim().notEmpty();
 
+const currency = check("currency").exists().trim().notEmpty();
+
 const userId = check("userId").exists().trim().notEmpty();
 
 const pin = (pinField) =>
@@ -34,6 +36,7 @@ const validateAccount = [
   userId,
   pin("pin"),
   amount,
+  currency,
 ];
 
 const validateRecharge = [amount, pin("pin")];

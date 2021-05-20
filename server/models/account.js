@@ -28,6 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       pin: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
       amount: DataTypes.FLOAT,
+      currency: DataTypes.STRING,
       salt: DataTypes.TEXT,
     },
     {
