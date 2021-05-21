@@ -4,9 +4,6 @@ const userId = check("userId").exists().trim().notEmpty();
 
 const balance = check("balance").exists().trim().notEmpty();
 
-const validateWallet = [
-    userId,
-    balance,
-];
+const validateWallet = [userId, balance];
 
 export { validateWallet };

@@ -1,5 +1,5 @@
 import { check } from "express-validator";
-import WalletHelper from '../helpers/walletHelper';
+import WalletHelper from "../helpers/walletHelper";
 
 const amount = check("amount").exists().trim().notEmpty();
 const password = (passwordField) =>
@@ -21,23 +21,23 @@ const password = (passwordField) =>
 const validateTransfer = [amount, password("password")];
 
 const checkBalance = async (req, res, next) => {
-    const { amount } = req.body;
-    const {user} = req;
-    const wallet = await WalletHelper.walletExists('userId', user.id);
-    if(wallet) {
-        if (wallet.balance >= amount) {
-            return next();
-        }
-          return res.status(400).json({
-            status: 400,
-            error: "Insuficient funds",
-            availableBalance: wallet.balance,
-          });
+  const { amount } = req.body;
+  const { user } = req;
+  const wallet = await WalletHelper.walletExists("userId", user.id);
+  if (wallet) {
+    if (wallet.balance >= amount) {
+      return next();
     }
-    return res.status(404).json({
-        status: 404,
-        error: 'wallet not found'
-    })
+    return res.status(400).json({
+      status: 400,
+      error: "Insuficient funds",
+      availableBalance: wallet.balance,
+    });
+  }
+  return res.status(404).json({
+    status: 404,
+    error: "wallet not found",
+  });
 };
 
 export { validateTransfer, checkBalance };

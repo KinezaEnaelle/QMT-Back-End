@@ -10,19 +10,19 @@ const validateNumber = async (req, res, next) => {
     /^257[61,62,68,69,71,72,75,76,77,79][0-9]{7}$/
   ).test(phoneNumber);
   if (rwandaExp) {
-      req.currency = 'RWF';
+    req.currency = "RWF";
     return next();
-  } else if(tanzaniaExp){
-    req.currency = 'TZS';
+  } else if (tanzaniaExp) {
+    req.currency = "TZS";
     return next();
-  } else if(ugandaExp){
-    req.currency = 'UGX';
+  } else if (ugandaExp) {
+    req.currency = "UGX";
     return next();
-  } else if(kenyaExp){
-    req.currency = 'KES';
+  } else if (kenyaExp) {
+    req.currency = "KES";
     return next();
-  } else if(burundiExp){
-    req.currency = 'BIF';
+  } else if (burundiExp) {
+    req.currency = "BIF";
     return next();
   }
   return res.status(401).json({

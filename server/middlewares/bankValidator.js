@@ -1,9 +1,6 @@
 import { check } from "express-validator";
 
-const name = check("name")
-  .exists()
-  .withMessage("name required")
-  .trim()
+const name = check("name").exists().withMessage("name required").trim();
 
 const location = check("location", "the location field is required")
   .exists()

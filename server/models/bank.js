@@ -1,7 +1,5 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Bank extends Model {
     /**
@@ -12,18 +10,27 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      Bank.hasMany(models.Account,{
+      Bank.hasMany(models.Account, {
         foreignKey: "accountNumber",
-        as: "accounts"
+        as: "accounts",
       });
     }
-  };
-  Bank.init({
-    name: DataTypes.STRING,
-    location: DataTypes.ENUM('BURUNDI','RWANDA','KENYA','UGANDA','TANZANIA'),
-  }, {
-    sequelize,
-    modelName: 'Bank',
-  });
+  }
+  Bank.init(
+    {
+      name: DataTypes.STRING,
+      location: DataTypes.ENUM(
+        "BURUNDI",
+        "RWANDA",
+        "KENYA",
+        "UGANDA",
+        "TANZANIA"
+      ),
+    },
+    {
+      sequelize,
+      modelName: "Bank",
+    }
+  );
   return Bank;
 };

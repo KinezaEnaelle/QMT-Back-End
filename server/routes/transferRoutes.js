@@ -6,7 +6,7 @@ import {
   checkBalance,
 } from "../middlewares/transferValidator";
 import { checkValidations } from "../middlewares/furtherSignupValidator";
-import { transferMoney } from '../controllers/transferController';
+import { transferMoney } from "../controllers/transferController";
 
 const router = Router();
 

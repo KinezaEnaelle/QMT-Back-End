@@ -6,7 +6,7 @@ const generateToken = (role, id) =>
   jwt.sign(
     {
       role,
-      id
+      id,
     },
     process.env.PRIVATE_KEY
   );

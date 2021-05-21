@@ -1,6 +1,6 @@
 import Router from "express";
 import { addAccount } from "../controllers/accountController";
-import { rechargeBalance } from  '../controllers/rechargeController';
+import { rechargeBalance } from "../controllers/rechargeController";
 import {
   validateAccount,
   validateRecharge,

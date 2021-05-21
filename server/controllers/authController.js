@@ -30,17 +30,17 @@ const signUp = async (req, res) => {
     const savedUser = await AuthHelper.saveUser(user);
     if (savedUser) {
       const userId = savedUser.id;
-      let currency = '';
+      let currency = "";
       if (savedUser.country === "RWANDA") {
-        currency = 'RWF';
+        currency = "RWF";
       } else if (savedUser.country === "BURUNDI") {
-        currency = 'BIF';
+        currency = "BIF";
       } else if (savedUser.country === "UGANDA") {
-        currency = 'UGX';
+        currency = "UGX";
       } else if (savedUser.country === "KENYA") {
-        currency = 'KES';
+        currency = "KES";
       } else if (savedUser.country === "TANZANIA") {
-        currency = 'TZS';
+        currency = "TZS";
       }
       console.log(currency);
       await WalletHelper.saveWallet({ userId, balance: 0, currency });
