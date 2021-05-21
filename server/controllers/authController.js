@@ -3,6 +3,7 @@ import { hashPassword } from "../helpers/hasher";
 import tokenGenerator from "../helpers/helperToken";
 import passwordHashHelper from "../helpers/passwordHashHelper";
 import WalletHelper from "../helpers/walletHelper";
+import wallet from "../models/wallet";
 
 const signUp = async (req, res) => {
   try {
@@ -28,38 +29,21 @@ const signUp = async (req, res) => {
     };
     const savedUser = await AuthHelper.saveUser(user);
     if (savedUser) {
+      const userId = savedUser.id;
+      let currency = '';
       if (savedUser.country === "RWANDA") {
-        req.body.userId = savedUser.id;
-        req.body.balance = 0;
-        const { userId, balance } = req.body;
-        const wallet = { userId, balance };
-        await WalletHelper.saveWallet(wallet);
+        currency = 'RWF';
       } else if (savedUser.country === "BURUNDI") {
-        req.body.userId = savedUser.id;
-        req.body.balance = 0;
-        const { userId, balance } = req.body;
-        const wallet = { userId, balance };
-        await WalletHelper.saveWallet(wallet);
+        currency = 'BIF';
       } else if (savedUser.country === "UGANDA") {
-        req.body.userId = savedUser.id;
-        req.body.balance = 0;
-        const { userId, balance } = req.body;
-        const wallet = { userId, balance };
-        await WalletHelper.saveWallet(wallet);
+        currency = 'UGX';
       } else if (savedUser.country === "KENYA") {
-        req.body.userId = savedUser.id;
-        req.body.balance = 0;
-        const { userId, balance } = req.body;
-        const wallet = { userId, balance };
-        await WalletHelper.saveWallet(wallet);
+        currency = 'KES';
       } else if (savedUser.country === "TANZANIA") {
-        req.body.userId = savedUser.id;
-        req.body.balance = 0;
-        const { userId, balance } = req.body;
-        const wallet = { userId, balance };
-        await WalletHelper.saveWallet(wallet);
+        currency = 'TZS';
       }
-
+      console.log(currency);
+      await WalletHelper.saveWallet({ userId, balance: 0, currency });
       return res.status(201).json({
         status: 201,
         message: " Successfully created",

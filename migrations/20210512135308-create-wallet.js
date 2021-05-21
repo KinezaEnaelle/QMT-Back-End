@@ -14,6 +14,9 @@ module.exports = {
       balance: {
         type: Sequelize.INTEGER
       },
+      currency: {
+        type: Sequelize.ENUM('RWF', 'UGX', 'KES', 'TZS', 'BIF'),
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

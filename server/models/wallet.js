@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       userId: DataTypes.INTEGER,
       balance: DataTypes.INTEGER,
+      currency: DataTypes.ENUM('RWF', 'UGX', 'KES', 'TZS', 'BIF'),
     },
     {
       sequelize,

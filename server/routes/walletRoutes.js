@@ -7,7 +7,7 @@ import { checkValidations } from "../middlewares/furtherSignupValidator";
 const router = Router();
 
 router.post(
-  "/wallet/addWallet",
+  '/wallet/recharge',
   verifyToken,
   validateWallet,
   checkValidations,

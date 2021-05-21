@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
       pin: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
       amount: DataTypes.FLOAT,
-      currency: DataTypes.STRING,
+      currency: DataTypes.ENUM('RWF', 'UGX', 'KES', 'TZS', 'BIF'),
       salt: DataTypes.TEXT,
     },
     {

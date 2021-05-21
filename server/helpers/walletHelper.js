@@ -16,7 +16,7 @@ class WalletHelper {
         updatedAt: new Date(),
       },
       {
-        fields: ["userId", "balance"],
+        fields: ['userId', 'balance', 'currency'],
       }
     );
     return savedWallet;

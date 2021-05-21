@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.FLOAT,
       },
       currency: {
-        type: Sequelize.STRING,
+        type: Sequelize.ENUM('RWF', 'UGX', 'KES', 'TZS', 'BIF'),
       },
       salt: {
         type: Sequelize.TEXT,
