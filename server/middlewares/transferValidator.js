@@ -19,6 +19,7 @@ const password = (passwordField) =>
     .withMessage("reg");
 
 const validateTransfer = [amount, password("password")];
+const validateConvertMoney = [ amount ];
 
 const checkBalance = async (req, res, next) => {
   const { amount } = req.body;
@@ -26,6 +27,7 @@ const checkBalance = async (req, res, next) => {
   const wallet = await WalletHelper.walletExists("userId", user.id);
   if (wallet) {
     if (wallet.balance >= amount) {
+      req.wallet = wallet;
       return next();
     }
     return res.status(400).json({
@@ -40,4 +42,4 @@ const checkBalance = async (req, res, next) => {
   });
 };
 
-export { validateTransfer, checkBalance };
+export { validateTransfer, checkBalance, validateConvertMoney };

@@ -1,6 +1,6 @@
 import Router from "express";
 import { addAccount } from "../controllers/accountController";
-import { rechargeBalance } from "../controllers/rechargeController";
+import { rechargeBalance, deposit } from "../controllers/rechargeController";
 import {
   validateAccount,
   validateRecharge,
@@ -10,6 +10,7 @@ import {
 } from "../middlewares/accountValidator";
 import { verifyToken } from "../middlewares/checkToken";
 import { checkValidations } from "../middlewares/furtherSignupValidator";
+import { checkFunds } from '../middlewares/walletValidator';
 
 const router = Router();
 
@@ -21,7 +22,7 @@ router.post(
   addAccount
 );
 router.put(
-  "/account/:number",
+  "/account/:number/withdraw",
   verifyToken,
   validateRecharge,
   checkValidations,
@@ -29,6 +30,17 @@ router.put(
   validatePin,
   checkAmount,
   rechargeBalance
+);
+
+router.put(
+  "/account/:number/deposit",
+  verifyToken,
+  validateRecharge,
+  checkValidations,
+  isAccountOwner,
+  validatePin,
+  checkFunds,
+  deposit
 );
 
 export default router;

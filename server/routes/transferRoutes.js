@@ -4,11 +4,22 @@ import { validateNumber } from "../middlewares/phoneNumberValidator";
 import {
   validateTransfer,
   checkBalance,
+  validateConvertMoney,
 } from "../middlewares/transferValidator";
 import { checkValidations } from "../middlewares/furtherSignupValidator";
-import { transferMoney } from "../controllers/transferController";
+import { transferMoney, convertMoney } from "../controllers/transferController";
 
 const router = Router();
+
+router.get(
+  "/wallet/transfer",
+  verifyToken,
+  validateConvertMoney,
+  checkValidations,
+  validateNumber,
+  checkBalance,
+  convertMoney
+);
 
 router.put(
   "/wallet/transfer",

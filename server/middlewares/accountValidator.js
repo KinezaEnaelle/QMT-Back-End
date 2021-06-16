@@ -50,18 +50,20 @@ const isAccountOwner = async (req, res, next) => {
   );
   if (accountExists) {
     const { id } = req.user;
+    console.log(accountExists.userId);
+    console.log(id);
     if (accountExists.userId === id) {
       req.account = accountExists;
       return next();
     }
     return res.status(401).json({
       status: 401,
-      error: "Incorrect account number",
+      error: "Incorrect account number1",
     });
   }
   return res.status(404).json({
     status: 404,
-    error: "Incorrect account number",
+    error: "Incorrect account number2",
   });
 };
 

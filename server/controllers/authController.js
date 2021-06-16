@@ -61,10 +61,14 @@ const signUp = async (req, res) => {
 const signIn = async (req, res) => {
   const emailExists = await AuthHelper.userExists("email", req.body.email);
   if (emailExists) {
+    console.log('====================================');
+    console.log(`plain password: ${req.body.password}\nhashed password: ${emailExists.password}\n${JSON.stringify(emailExists)}`);
+    console.log('====================================');
     const passwordExist = await passwordHashHelper.checkPassword(
       req.body.password,
       emailExists.password
     );
+    console.log(passwordExist);
     if (passwordExist) {
       return res.status(200).json({
         status: 200,
