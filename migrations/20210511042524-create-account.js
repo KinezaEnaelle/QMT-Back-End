@@ -12,12 +12,15 @@ module.exports = {
         type: Sequelize.STRING,
       },
       accountNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
       pin: {
         type: Sequelize.TEXT,
       },
       userId: {
+        type: Sequelize.INTEGER,
+      },
+      bankId: {
         type: Sequelize.INTEGER,
       },
       amount: {

@@ -1,5 +1,5 @@
 import Router from "express";
-import { addWallet } from "../controllers/walletController";
+import { addWallet,viewWalletInfo } from "../controllers/walletController";
 import { validateWallet } from "../middlewares/walletValidator";
 import { verifyToken } from "../middlewares/checkToken";
 import { checkValidations } from "../middlewares/furtherSignupValidator";
@@ -13,5 +13,6 @@ router.post(
   checkValidations,
   addWallet
 );
+router.get('/wallet/:id', viewWalletInfo);
 
 export default router;

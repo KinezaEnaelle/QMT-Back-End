@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: "userId",
       });
       Account.belongsTo(models.Bank, {
-        foreignKey: "accountNumber",
+        foreignKey: "bankId",
       });
       Account.belongsTo(models.Wallet, {
         foreignKey: "userId",
@@ -24,12 +24,13 @@ module.exports = (sequelize, DataTypes) => {
   Account.init(
     {
       accountName: DataTypes.STRING,
-      accountNumber: DataTypes.INTEGER,
+      accountNumber: DataTypes.STRING,
       pin: DataTypes.TEXT,
       userId: DataTypes.INTEGER,
       amount: DataTypes.FLOAT,
       currency: DataTypes.ENUM("RWF", "UGX", "KES", "TZS", "BIF"),
       salt: DataTypes.TEXT,
+      bankId: DataTypes.INTEGER,
     },
     {
       sequelize,

@@ -42,5 +42,19 @@ class AccountHelper {
     );
     return updatedAccount;
   }
+
+  static async updateUserId(userId, accountNumber) {
+    const updatedAccount = await Account.update(
+      {
+        userId: userId,
+      },
+      {
+        where: {
+          accountNumber: accountNumber,
+        },
+      }
+    );
+    return updatedAccount;
+  }
 }
 export default AccountHelper;

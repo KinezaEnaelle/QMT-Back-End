@@ -7,9 +7,10 @@ const accountName = check("accountName")
   .withMessage("account name required")
   .trim();
 
-const accountNumber = check("accountNumber")
+  const accountNumber = check("accountNumber")
   .exists()
   .withMessage("account number required")
+  .matches(/^[0-9]+$/)
   .trim();
 
 const amount = check("amount").exists().trim().notEmpty();

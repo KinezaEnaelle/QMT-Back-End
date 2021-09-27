@@ -1,4 +1,6 @@
 import WalletHelper from "../helpers/walletHelper";
+import models from '../models';
+const { Wallet } = models;
 
 const addWallet = async (req, res) => {
   const { userId, balance } = req.body;
@@ -16,4 +18,22 @@ const addWallet = async (req, res) => {
     error: "Bad request",
   });
 };
-export { addWallet };
+const viewWalletInfo = async (req, res) => {
+  const userId = req.params.id;
+  const foundWallet = await Wallet.findOne({where: {userId:userId}});
+  if(!foundWallet){
+    return res.status(404).json({
+      status: 404,
+      error: 'Wallet not found',
+    });
+  }
+  res.status(200).json({
+    status: 200,
+    data: {
+      userId: foundWallet.userId,
+      balance: foundWallet.balance,
+      currency: foundWallet.currency
+    }
+  });
+}
+export { addWallet, viewWalletInfo };
